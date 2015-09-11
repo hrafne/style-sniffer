@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
-  "author": "",
+  "author": "Hrafn Einarsson",
   "license": "ISC",
   "dependencies": {
     "bluebird": "^2.10.0",
@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "chai": "^3.2.0",
-    "chai-as-promised": "^5.1.0"
+    "chai-as-promised": "^5.1.0",
+    "mocha": "^2.3.2"
   }
 }
