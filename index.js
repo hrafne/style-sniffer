@@ -38,6 +38,3 @@ module.exports = function (url, selector, style) {
 
 	});
 };
-
-// TODO:
-// security: what about timeouts?
