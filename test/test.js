@@ -34,10 +34,26 @@ describe('Sniff', function () {
 	});
 
 	it('responds with matching font collection', function () {
-		return sniffer('http://localhost:5050', 'h1', 'font-family').should.eventually.equal('Georgia');
+		var options = {
+			url: 'http://localhost:5050',
+			selector: 'h1',
+			style: 'font-family'
+		};
+
+		return sniffer(options).should.eventually.equal('Georgia');
 	});
 
 	it('should be rejected', function () {
-		return sniffer('http://localhost:5050', 'h2', 'font-family').should.be.rejected;
+		var options = {
+			url: 'http://localhost:5050',
+			selector: 'h2',
+			style: 'font-family'
+		};
+
+		return sniffer(options).should.be.rejected;
 	});
+
+	it('should throw an error', function () {
+		return sniffer().should.be.rejectedWith(Error);
+	})
 });

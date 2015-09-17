@@ -8,8 +8,13 @@
   },
   "author": "Hrafn Einarsson",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hrafne/style-sniffer.git"
+  },
   "dependencies": {
     "bluebird": "^2.10.0",
+    "lodash": "^3.10.1",
     "phantom": "^0.7.2",
     "phantomjs": "^1.9.18"
   },

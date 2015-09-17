@@ -1,8 +1,14 @@
 var path = require('path');
 var phantom = require('phantom');
 var Promise = require('bluebird');
+var _ = require('lodash');
 
-module.exports = function (url, selector, style) {
+module.exports = function (options) {
+	options = _.defaults(options || {url: '', selector: 'body', style: 'background-color'});
+
+	if(options.url === '') {
+		return Promise.reject(new Error('Url is missing'));
+	}
 
 	var phantomOptions = {
 		path: path.join(__dirname, 'node_modules/phantomjs/lib/phantom/bin/'),
@@ -15,7 +21,7 @@ module.exports = function (url, selector, style) {
 
 		phantom.create('--ignore-ssl-errors=true', '--web-security=false', function (ph) {
 			ph.createPage(function (page) {
-				page.open(url, function (status) {
+				page.open(options.url, function (status) {
 
 					page.evaluate(function (sel, st) {
 						var el = document.querySelector(sel);
@@ -29,7 +35,7 @@ module.exports = function (url, selector, style) {
 							reject('Nothing found');
 						}
 
-					}, selector, style);
+					}, options.selector, options.style);
 
 					ph.exit();
 				});
